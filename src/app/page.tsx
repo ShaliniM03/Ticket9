@@ -28,7 +28,6 @@ const firebaseConfig = {
   appId: "1:742858075851:web:c3e13f710b88f0f87e354e"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
 const DEMO_CATS: TaxonomyType[] = [
