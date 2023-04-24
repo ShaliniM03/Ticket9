@@ -1,0 +1,1639 @@
+{
+	"info": {
+		"_postman_id": "84c98d24-3e69-4093-983e-84cdec5476fb",
+		"name": "Ticket9 App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26048411"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Login/Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"authToken\":\"\", //from Firebase authentication\r\n    \"phone\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"description": "To be invoked after user has verified his phone number using Firebase auth.\n\nPage: OTP Verification"
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"authToken\":\"\",\r\n    \"phone\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"success\": true,\r\n    \"isNewUser\":true, //Profile screen will be show if user is new,\r\n    \"role\":\"vendor\",\r\n    \"token\":\"\"//To be used in subsequent authorised calls\r\n}"
+						},
+						{
+							"name": "400",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"authToken\":\"\",\r\n    \"phone\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"success\": false,\r\n    \"message\":\"<error_message>\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\":\"\",\r\n    \"last_name\":\"\",\r\n    \"email\": \"\",\r\n    \"gender\":\"male\",//\"male\",\"femail\",\"others\"\r\n    \"age\":10,\r\n    \"dob\":\"22-07-1991\",\r\n    \"address\":\"\",\r\n    \"city\":\"\",\r\n    \"thumbnail\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"profile"
+							]
+						},
+						"description": "To be invoked after user has verified his phone number using Firebase auth.\n\nPage: OTP Verification"
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"first_name\":\"\",\r\n    \"last_name\":\"\",\r\n    \"email\": \"\",\r\n    \"gender\":\"male\",//\"male\",\"femail\",\"others\"\r\n    \"age\":10,\r\n    \"dob\":\"22-07-1991\",\r\n    \"address\":\"\",\r\n    \"city\":\"\",\r\n    \"thumbnail\":\"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/profile",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"profile"
+									]
+								}
+							},
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"success\":true,\r\n    \"message\":\"Profile updated successfully\"\r\n}"
+						},
+						{
+							"name": "400",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"first_name\":\"\",\r\n    \"last_name\":\"\",\r\n    \"email\": \"\",\r\n    \"gender\":\"male\",//\"male\",\"femail\",\"others\"\r\n    \"age\":10,\r\n    \"dob\":\"22-07-1991\",\r\n    \"address\":\"\",\r\n    \"city\":\"\",\r\n    \"thumbnail\":\"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/profile",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"profile"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"This email is already been used by another user\"\n}"
+						},
+						{
+							"name": "401",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"first_name\":\"\",\r\n    \"last_name\":\"\",\r\n    \"email\": \"\",\r\n    \"gender\":\"male\",//\"male\",\"femail\",\"others\"\r\n    \"age\":10,\r\n    \"dob\":\"22-07-1991\",\r\n    \"address\":\"\",\r\n    \"city\":\"\",\r\n    \"thumbnail\":\"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/profile",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"profile"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Please login to continue\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Save Event To Wishlist",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"event_id\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/wishlist",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"wishlist"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"event_id\":\"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/wishlist",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"wishlist"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"success\":true,\r\n    \"message\":\"Saved to wishlist\"\r\n}"
+						},
+						{
+							"name": "401",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"event_id\":\"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/wishlist",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"wishlist"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"success\":false,\r\n    \"message\":\"Please login to continue\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Account details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/user-details",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user-details"
+							]
+						},
+						"description": "To be used for Homepage."
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/user-details",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user-details"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"success\": true,\r\n    \"data\": {\r\n        \"profile\": {\r\n            \"first_name\": \"\",\r\n            \"last_name\": \"\",\r\n            \"email\": \"\",\r\n            \"gender\": \"\",\r\n            \"age\": 10,\r\n            \"dob\": \"22-07-1991\",\r\n            \"address\": \"\",\r\n            \"city\": \"\",\r\n            \"thumbnail\": \"\",\r\n            \"role\":\"customer\"\r\n        },\r\n        \"wishlist\": [\r\n            {\r\n                \"title\": \"\",\r\n                \"category_id\": 2,\r\n                \"category_name\": \"Arts\",\r\n                \"category_color\":\"#450055\",\r\n                \"start_time\": 1680158814000,\r\n                \"end_time\": 1680158814000,\r\n                \"latitude\": 8.14,\r\n                \"longitude\": 4.56,\r\n                \"venue_name\": \"Community Hall\",\r\n                \"address\": \"\",\r\n                \"city\": \"\",\r\n                \"starting_price\": {\r\n                    \"amount\": 3.45,\r\n                    \"currency\": \"₹\"\r\n                }\r\n            }\r\n        ]\r\n    }\r\n}"
+						},
+						{
+							"name": "401",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/user-details",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user-details"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"success\": true,\r\n    \"message\":\"Please login to continue\"\r\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Events",
+			"item": [
+				{
+					"name": "Create Event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"\",\r\n    \"description\": \"\",\r\n    \"category_id\": 2,\r\n    \"start_time\": 1680158814000,\r\n    \"end_time\": 1680158814000,\r\n    \"cancellation_policy\": \"\",\r\n    \"special_note\": \"\",\r\n    \"latitude\": 8.14,\r\n    \"longitude\": 4.56,\r\n    \"venue_name\": \"Community Hall\",\r\n    \"address\": \"\",\r\n    \"city\": \"\",\r\n    \"images\": [\r\n        \"<url_from_upload_api>\"\r\n    ],\r\n    \"banner\": \"<url_from_upload_api>\",\r\n    \"availabilities\": {\r\n        \"parking\": true,\r\n        \"pets_allowed\": true,\r\n        \"few_other_to_be_added\": true\r\n    },\r\n    \"tickets\": [\r\n        {\r\n            \"name\": \"Early Bird\",\r\n            \"description\": \"\",\r\n            \"selling_start_time\": 1680158814000,\r\n            \"selling_end_time\": 1680158814000,\r\n            \"price\": {\r\n                \"amount\": 3.45,\r\n                \"currency\": \"₹\"\r\n            },\r\n            \"total_available\": 100,\r\n            \"text_on_ticket\": \"\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/event",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"event"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"\",\r\n    \"description\": \"\",\r\n    \"category_id\": 2,\r\n    \"start_time\": 1680158814000,\r\n    \"end_time\": 1680158814000,\r\n    \"cancellation_policy\": \"\",\r\n    \"special_note\": \"\",\r\n    \"latitude\": 8.14,\r\n    \"longitude\": 4.56,\r\n    \"venue_name\": \"Community Hall\",\r\n    \"address\": \"\",\r\n    \"city\": \"\",\r\n    \"images\": [\r\n        \"<url_from_upload_api>\"\r\n    ],\r\n    \"banner\": \"<url_from_upload_api>\",\r\n    \"availabilities\": {\r\n        \"parking\": true,\r\n        \"pets_allowed\": true,\r\n        \"few_other_to_be_added\": true\r\n    },\r\n    \"tickets\": [\r\n        {\r\n            \"name\": \"Early Bird\",\r\n            \"description\": \"\",\r\n            \"selling_start_time\": 1680158814000,\r\n            \"selling_end_time\": 1680158814000,\r\n            \"price\": {\r\n                \"amount\": 3.45,\r\n                \"currency\": \"₹\"\r\n            },\r\n            \"total_available\": 100,\r\n            \"text_on_ticket\": \"\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/event",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"event"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"success\":true,\r\n    \"message\":\"Event created successfully\"\r\n}"
+						},
+						{
+							"name": "400",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"\",\r\n    \"description\": \"\",\r\n    \"category_id\": 2,\r\n    \"start_time\": 1680158814000,\r\n    \"end_time\": 1680158814000,\r\n    \"cancellation_policy\": \"\",\r\n    \"special_note\": \"\",\r\n    \"latitude\": 8.14,\r\n    \"longitude\": 4.56,\r\n    \"venue_name\": \"Community Hall\",\r\n    \"address\": \"\",\r\n    \"city\": \"\",\r\n    \"images\": [\r\n        \"<url_from_upload_api>\"\r\n    ],\r\n    \"banner\": \"<url_from_upload_api>\",\r\n    \"availabilities\": {\r\n        \"parking\": true,\r\n        \"pets_allowed\": true,\r\n        \"few_other_to_be_added\": true\r\n    },\r\n    \"tickets\": [\r\n        {\r\n            \"name\": \"Early Bird\",\r\n            \"description\": \"\",\r\n            \"selling_start_time\": 1680158814000,\r\n            \"selling_end_time\": 1680158814000,\r\n            \"price\": {\r\n                \"amount\": 3.45,\r\n                \"currency\": \"₹\"\r\n            },\r\n            \"total_available\": 100,\r\n            \"text_on_ticket\": \"\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/event",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"event"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"success\":false,\r\n    \"message\":\"<error_message>\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"\",\r\n    \"description\": \"\",\r\n    \"category_id\": 2,\r\n    \"start_time\": 1680158814000,\r\n    \"end_time\": 1680158814000,\r\n    \"cancellation_policy\": \"\",\r\n    \"special_note\": \"\",\r\n    \"latitude\": 8.14,\r\n    \"longitude\": 4.56,\r\n    \"venue_name\": \"Community Hall\",\r\n    \"address\": \"\",\r\n    \"city\": \"\",\r\n    \"tickets\": [\r\n        {\r\n            \"name\": \"Early Bird\",\r\n            \"description\": \"\",\r\n            \"selling_start_time\": 1680158814000,\r\n            \"selling_end_time\": 1680158814000,\r\n            \"price\": {\r\n                \"amount\": 3.45,\r\n                \"currency\": \"₹\"\r\n            },\r\n            \"total_available\": 100,\r\n            \"text_on_ticket\": \"\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/event?id=<id>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"event"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "<id>"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"\",\r\n    \"description\": \"\",\r\n    \"category_id\": 2,\r\n    \"start_time\": 1680158814000,\r\n    \"end_time\": 1680158814000,\r\n    \"cancellation_policy\": \"\",\r\n    \"special_note\": \"\",\r\n    \"latitude\": 8.14,\r\n    \"longitude\": 4.56,\r\n    \"venue_name\": \"Community Hall\",\r\n    \"address\": \"\",\r\n    \"city\": \"\",\r\n    \"images\": [\r\n        \"<url_from_upload_api>\"\r\n    ],\r\n    \"banner\": \"<url_from_upload_api>\",\r\n    \"availabilities\": {\r\n        \"parking\": true,\r\n        \"pets_allowed\": true,\r\n        \"few_other_to_be_added\": true\r\n    },\r\n    \"tickets\": [\r\n        {\r\n            \"name\": \"Early Bird\",\r\n            \"description\": \"\",\r\n            \"selling_start_time\": 1680158814000,\r\n            \"selling_end_time\": 1680158814000,\r\n            \"price\": {\r\n                \"amount\": 3.45,\r\n                \"currency\": \"₹\"\r\n            },\r\n            \"total_available\": 100,\r\n            \"text_on_ticket\": \"\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/event?id=<id>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"event"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "<id>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"success\":true,\r\n    \"message\":\"Event updated successfully\"\r\n}"
+						},
+						{
+							"name": "400",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"\",\r\n    \"description\": \"\",\r\n    \"category_id\": 2,\r\n    \"start_time\": 1680158814000,\r\n    \"end_time\": 1680158814000,\r\n    \"cancellation_policy\": \"\",\r\n    \"special_note\": \"\",\r\n    \"latitude\": 8.14,\r\n    \"longitude\": 4.56,\r\n    \"venue_name\": \"Community Hall\",\r\n    \"address\": \"\",\r\n    \"city\": \"\", \"images\": [\r\n        \"<url_from_upload_api>\"\r\n    ],\r\n    \"banner\": \"<url_from_upload_api>\",\r\n    \"availabilities\": {\r\n        \"parking\": true,\r\n        \"pets_allowed\": true,\r\n        \"few_other_to_be_added\": true\r\n    },\r\n    \"tickets\": [\r\n        {\r\n            \"name\": \"Early Bird\",\r\n            \"description\": \"\",\r\n            \"selling_start_time\": 1680158814000,\r\n            \"selling_end_time\": 1680158814000,\r\n            \"price\": {\r\n                \"amount\": 3.45,\r\n                \"currency\": \"₹\"\r\n            },\r\n            \"total_available\": 100,\r\n            \"text_on_ticket\": \"\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/event?id=<id>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"event"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "<id>"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"success\":false,\r\n    \"message\":\"<error_message>\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/category",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/category",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"category"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"success\":true,\r\n    \"data\":[\r\n        {\r\n            \"id\":\"\",\r\n            \"name\":\"Arts\",\r\n            \"events_count\":250\r\n        }\r\n    ]\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Events",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/event",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"event"
+							]
+						},
+						"description": "To be used for Homepage.\n\nIf token is present in header, it means it is a logged in user and has favourite events.\n\nIf token is not present in header, it means a casual user or googlebot for seo"
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/event",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"event"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"success\": true,\r\n    \"data\": [\r\n        {\r\n            \"title\": \"\",\r\n            \"category_id\": 2,\r\n            \"category_name\": \"Arts\",\r\n            \"category_color\":\"#450055\",\r\n            \"start_time\": 1680158814000,\r\n            \"end_time\": 1680158814000,\r\n            \"latitude\": 8.14,\r\n            \"longitude\": 4.56,\r\n            \"venue_name\": \"Community Hall\",\r\n            \"address\": \"\",\r\n            \"city\": \"\",\r\n            \"starting_price\": {\r\n                \"amount\": 3.45,\r\n                \"currency\": \"₹\"\r\n            },\r\n            \"user_favourite\":true\r\n        }\r\n    ]\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Event Detail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/event?id=<id>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"event"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "<id>"
+								}
+							]
+						},
+						"description": "StartFragment\n\nIf token is present in header, it means it is a logged in user and has favourite events.\n\nIf token is not present in header, it means a casual user\n\nEndFragment"
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/event?id=<id>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"event"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "<id>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"success\":true,\r\n    \"data\":{\r\n        \"id\":\"\",\r\n    \"title\": \"\",\r\n    \"description\": \"\",\r\n    \"category_id\": 2,\r\n     \"category_name\": \"Arts\",\r\n    \"category_color\":\"#450055\",\r\n    \"organiser_details\":{\r\n        \"name\":\"Kevin Francis\",\r\n        \"id\":\"\",\r\n        \"thumbnail\":\"\",\r\n        \"is_verified\":true\r\n    },\r\n    \"start_time\": 1680158814000,\r\n    \"end_time\": 1680158814000,\r\n    \"cancellation_policy\": \"\",\r\n    \"special_note\": \"\",\r\n    \"latitude\": 8.14,\r\n    \"longitude\": 4.56,\r\n    \"venue_name\": \"Community Hall\",\r\n    \"address\": \"\",\r\n    \"city\": \"\",\r\n    \"quick_message\":\"Seats are filling fast\",\r\n    \"user_favourite\":true,\r\n    \"tickets\": [\r\n        {\r\n            \"id\":\"\",\r\n            \"name\": \"Early Bird\",\r\n            \"description\": \"\",\r\n            \"selling_start_time\": 1680158814000,\r\n            \"selling_end_time\": 1680158814000,\r\n            \"price\": {\r\n                \"amount\": 3.45,\r\n                \"currency\": \"₹\"\r\n            },\r\n            \"total_available\": 100,\r\n            \"remaining_available\":10,\r\n            \"text_on_ticket\": \"\"\r\n        }\r\n    ]\r\n}\r\n    \r\n}"
+						}
+					]
+				},
+				{
+					"name": "Search Events",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/events-search?category_id=1&start_date=25-11-2023&end_date=26-11-2023&location&name&start_price=10&end_price=100",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"events-search"
+							],
+							"query": [
+								{
+									"key": "category_id",
+									"value": "1"
+								},
+								{
+									"key": "start_date",
+									"value": "25-11-2023"
+								},
+								{
+									"key": "end_date",
+									"value": "26-11-2023"
+								},
+								{
+									"key": "location",
+									"value": null,
+									"description": "Can be city, address"
+								},
+								{
+									"key": "name",
+									"value": null
+								},
+								{
+									"key": "start_price",
+									"value": "10"
+								},
+								{
+									"key": "end_price",
+									"value": "100"
+								}
+							]
+						},
+						"description": "StartFragment\n\nIf token is present in header, it means it is a logged in user and has favourite events.\n\nIf token is not present in header, it means a casual user\n\nEndFragment"
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/event",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"event"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"title\": \"\",\n            \"category_id\": 2,\n            \"category_name\": \"Arts\", \n            \"category_color\":\"#450055\",\n            \"start_time\": 1680158814000,\n            \"end_time\": 1680158814000,\n            \"latitude\": 8.14,\n            \"longitude\": 4.56,\n            \"venue_name\": \"Community Hall\",\n            \"address\": \"\",\n            \"city\": \"\",\n            \"user_favourite\":true,\n            \"starting_price\": {\n                \"amount\": 3.45,\n                \"currency\": \"₹\"\n            }\n        }\n    ]\n}"
+						},
+						{
+							"name": "400",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/event",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"event"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\":\"<message>\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Booking",
+			"item": [
+				{
+					"name": "Create Booking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"event_id\": \"\",\r\n    \"items\": [\r\n        {\r\n            \"ticket_id\": \"\",\r\n            \"quantity\": 2\r\n        }\r\n    ],\r\n    \"attendee_details\": [\r\n        {\r\n            \"first_name\": \"\",\r\n            \"last_name\": \"\",\r\n            \"gender\": \"male\",\r\n            \"age\": 45,\r\n            \"email\": \"\",\r\n            \"phone\": \"\",\r\n            \"city\": \"\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/booking",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"event_id\": \"\",\r\n    \"items\": [\r\n        {\r\n            \"ticket_id\": \"\",\r\n            \"quantity\": 2\r\n        }\r\n    ],\r\n    \"attendee_details\": [\r\n        {\r\n            \"first_name\": \"\",\r\n            \"last_name\": \"\",\r\n            \"gender\": \"male\",\r\n            \"age\": 45,\r\n            \"email\": \"\",\r\n            \"phone\": \"\",\r\n            \"city\": \"\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/booking",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"booking"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"success\":true,\r\n    \"booking_id\":\"\",\r\n    \"razorpay_order_id\":\"order_9A33XWu170gUtm\"\r\n}"
+						},
+						{
+							"name": "400",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"event_id\": \"\",\r\n    \"items\": [\r\n        {\r\n            \"ticket_id\": \"\",\r\n            \"quantity\": 2\r\n        }\r\n    ],\r\n    \"attendee_details\": [\r\n        {\r\n            \"first_name\": \"\",\r\n            \"last_name\": \"\",\r\n            \"gender\": \"male\",\r\n            \"age\": 45,\r\n            \"email\": \"\",\r\n            \"phone\": \"\",\r\n            \"city\": \"\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/booking",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"booking"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"success\":true,\r\n    \"message\":\"Sorry! Tickets have already been booked\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Confirm Booking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"booking_id\": \"\",\r\n    \"is_payment_success\":true,\r\n    \"razorpay_payment_id\":\"\",\r\n    \"razorpay_order_id\":\"\",\r\n    \"razorpay_signature\":\"\"\r\n   \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/confirm-booking",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"confirm-booking"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200(Payment Success)",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"booking_id\": \"\",\r\n    \"is_payment_success\":true,\r\n    \"razorpay_payment_id\":\"\",\r\n    \"razorpay_order_id\":\"\",\r\n    \"razorpay_signature\":\"\"\r\n   \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/confirm-booking",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"confirm-booking"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"success\":true,\r\n    \"booking_id\":\"\",\r\n    \"qr_code\":\"\"\r\n\r\n}"
+						},
+						{
+							"name": "200(Payment Failed)",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"booking_id\": \"\",\r\n    \"is_payment_success\":false,\r\n    \"razorpay_payment_id\":null,\r\n    \"razorpay_order_id\":null,\r\n    \"razorpay_signature\":null\r\n   \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/confirm-booking",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"confirm-booking"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"success\":true,\r\n    \"message\":\"<message>\"\r\n}"
+						},
+						{
+							"name": "400",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"booking_id\": \"\",\r\n    \"is_payment_success\":false,\r\n    \"razorpay_payment_id\":\"\",\r\n    \"razorpay_order_id\":\"\",\r\n    \"razorpay_signature\":\"\"\r\n   \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/confirm-booking",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"confirm-booking"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"success\":true,\r\n    \"message\":\"<message>\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Cancel Booking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"booking_id\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cancel-booking",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cancel-booking"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"booking_id\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cancel-booking",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cancel-booking"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"success\":true,\r\n    \"message\":\"Booking cancelled. You will receive the refund in n days\"\r\n}"
+						},
+						{
+							"name": "400",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"booking_id\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cancel-booking",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cancel-booking"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"success\":false,\r\n    \"message\":\"<message>\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Bookings",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/booking",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"booking"
+							]
+						},
+						"description": "Returns bookings of the current user"
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/booking",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"booking"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"success\": true,\r\n    \"data\": [\r\n        {\r\n            \"booking_id\": \"\",\r\n            \"qr_code\":\"\",\r\n            \"status\":\"confirmed\",//confirmed, payment_failed, cancelled\r\n            \"items\": [\r\n                {\r\n                    \"ticket_id\": \"\",\r\n                    \"quantity\": 2\r\n                }\r\n            ],\r\n            \"event_info\": {\r\n                \"title\": \"\",\r\n                \"category_id\": 2,\r\n                \"category_name\": \"Arts\",\r\n                \"start_time\": 1680158814000,\r\n                \"end_time\": 1680158814000,\r\n                \"latitude\": 8.14,\r\n                \"longitude\": 4.56,\r\n                \"venue_name\": \"Community Hall\",\r\n                \"address\": \"\",\r\n                \"city\": \"\",\r\n                \"starting_price\": {\r\n                    \"amount\": 3.45,\r\n                    \"currency\": \"₹\"\r\n                }\r\n            }\r\n        }\r\n    ]\r\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Upload File",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": []
+						},
+						{
+							"key": "type",
+							"value": "USER_PROFILE",
+							"description": "USER_PROFILE, EVENT",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/upload-image",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"upload-image"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "type",
+									"value": "USER_PROFILE",
+									"description": "USER_PROFILE, EVENT",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/upload-image",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"upload-image"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"success\":true,\r\n    \"image_url\":\"\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Cities",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/cities",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cities"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/cities",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cities"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"succese\":true,\r\n    \"data\":[\r\n        {\r\n            \"name\":\"Mumbai\",\r\n            \"event_count\":100\r\n        }\r\n    ]\r\n}"
+				}
+			]
+		}
+	]
+}
