@@ -13,6 +13,23 @@ import SectionGridCityBox from "@/components/SectionGridCategoryBox";
 import SectionBecomeVendor from "@/components/SectionBecomeAnAuthor";
 import SectionVideos from "@/components/SectionVideos";
 import SectionClientSay from "@/components/SectionClientSay";
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyAptOKdw_aig5RNb8wM2ctgUiLIOUCNNt8",
+  authDomain: "sampleticket9.firebaseapp.com",
+  projectId: "sampleticket9",
+  storageBucket: "sampleticket9.appspot.com",
+  messagingSenderId: "742858075851",
+  appId: "1:742858075851:web:c3e13f710b88f0f87e354e"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
 const DEMO_CATS: TaxonomyType[] = [
   {
